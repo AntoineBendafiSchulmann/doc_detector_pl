@@ -188,7 +188,7 @@ Le script ```test_model_and_crop``` permet d'effectuer une prédiction sur une i
 
 5. Visualisation et sauvegarde :
 
-###### - Quatre images sont générées :
+##### - Quatre images sont générées :
 - L'image originale
 - Le masque attendu
 - Le masque prédit
