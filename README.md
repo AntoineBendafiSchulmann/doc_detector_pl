@@ -12,7 +12,7 @@ Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un
 
 ![Exemple d'image](assets/structure_files.png)
 
-le **.gitignore**  a vidé certains fichiers , et des dossiers n'ont pas été commit
+
 
 - **`data/`** : Données utilisées pour l'entraînement et les tests.
   - `images/` : Images d'entraînement.
