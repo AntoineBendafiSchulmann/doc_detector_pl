@@ -10,6 +10,10 @@ Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un
 
 ## Structure du Projet
 
+![Exemple d'image](assets/structure_files.png)
+
+le **.gitignore**  a vidé certains fichiers , et des dossiers n'ont pas été commit
+
 - **`data/`** : Données utilisées pour l'entraînement et les tests.
   - `images/` : Images d'entraînement.
   - `masks/` : Masques d'entraînement correspondants.
@@ -110,7 +114,7 @@ python test_model.py
 Les courbes affichées dans TensorBoard sont des outils essentiels pour suivre et comprendre l'entraînement du modèle. Elles permettent d'identifier les progrès réalisés mais aussi de détecter des problèmes comme l'overfitting.
 
 
-#### 1. Progression des Époques (epoch)
+#### 1. Progression des Époques (```epoch```)
 
 - Description : Cette courbe indique le nombre d'époques complétées au fur et à mesure de l'entraînement.
 ##### - Interprétation :
@@ -118,7 +122,7 @@ Les courbes affichées dans TensorBoard sont des outils essentiels pour suivre e
 
 ![Exemple d'image](assets/epoch.png)
 
-#### 2. Perte Moyenne par Époque (train_loss_epoch)
+#### 2. Perte Moyenne par Époque (```train_loss_epoch```)
 
 - Description : Cette courbe montre comment la "perte", une mesure de l'erreur entre la prédiction du modèle et les résultats attendus, évolue à chaque époque (un passage complet de toutes les images du jeu d'entraînement dans le modèle).
 ##### - Interprétation :
@@ -128,7 +132,7 @@ Les courbes affichées dans TensorBoard sont des outils essentiels pour suivre e
 ![Exemple d'image](assets/train_loss_epoch.png)
 
 
-#### 3. Perte à Chaque Étape de Traitement (train_loss_step)
+#### 3. Perte à Chaque Étape de Traitement (```train_loss_step```)
 
 - Description : Cette courbe montre les variations de la perte après chaque groupe d'images (mini-lot ou "batch") traité par le modèle.
 ##### - Interprétation :
@@ -137,7 +141,7 @@ Les courbes affichées dans TensorBoard sont des outils essentiels pour suivre e
 
 ![Exemple d'image](assets/train_loss_step.png)
 
-####  4. Perte sur les Données de Validation (val_loss)
+####  4. Perte sur les Données de Validation (```val_loss```)
 - Description :
 Cette courbe représente l'évolution de la perte (ou erreur) calculée sur les données de validation après chaque époque. Contrairement à la perte d'entraînement, la perte de validation mesure la capacité du modèle à généraliser sur des données qu'il n'a jamais vues auparavant.
 
