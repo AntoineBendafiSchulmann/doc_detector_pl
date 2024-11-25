@@ -1,5 +1,13 @@
 *.whl
 .venv/
 __pycache__/
-data/
+
+data/images/*.jpg
+data/masks/*.jpg
+data/test_images/*.png
+
+logs/
 runs/
+models/*.onnx
+models/*.pth
+outputs/*.png
