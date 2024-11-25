@@ -201,9 +201,6 @@ Pour tester cette fonctionnalité, exécutez simplement la commande suivante :
 ```bash
 python test_model.py
 ```
-Exemple de Résultats :
-
-![Exemple d'image](assets/result.png)
 
 Voici la sortie générée par ce script :
 
