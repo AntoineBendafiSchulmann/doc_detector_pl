@@ -4,7 +4,7 @@
 
 ## Description du Projet
 
-Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un modèle de détection basé sur l'architecture UNet qui est une structurede réseaux de neurones conçur pour la segmentation d'images, c'est à dire reconnaitre et localiser des éléments spécifiques dans une image. Il permet de détecter, segmenter et recadrer automatiquement des documents dans des images. Le projet est organisé pour un environnement d'entraînement et d'évaluation flexible, en exploitant TensorBoard pour visualiser les courbes d'entraînement et OpenCV pour le traitement des masques.
+Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un modèle de détection basé sur l'architecture **UNet** qui est une structure de réseaux de neurones conçu pour la segmentation d'images, c'est à dire reconnaitre et localiser des éléments spécifiques dans une image. Il permet de détecter, segmenter et recadrer automatiquement des documents dans des images. Le projet est organisé pour un environnement d'entraînement et d'évaluation flexible, en exploitant TensorBoard pour visualiser les courbes d'entraînement et OpenCV pour le traitement des masques.
 
 ---
 
@@ -180,7 +180,7 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 
 #### 5.Régularisation L2 :
 - Ajouter une régularisation L2 (via l'option ```weight_decay``` dans l'optimiseur Adam). Cela limite la croissance excessive des poids du modèle et empêche la mémorisation.
-- 
+
 #### 6.Simplifier le modèle si nécessaire :
 -Si le modèle est trop complexe pour la taille des données disponibles (par exemple, trop de couches ou de paramètres), réduire sa taille peut améliorer la généralisation.
 
