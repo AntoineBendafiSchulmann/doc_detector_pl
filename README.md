@@ -67,7 +67,7 @@ Dans le terminal principal, exécutez la commande suivante pour lancer l'entraî
 python train_model.py
 ```
 
-Ouvrez un deuxième terminal, placez-vous dans le dossier ```doc_detector_pl``` et exécutez**:
+Ouvrez un deuxième terminal, placez-vous dans le dossier ```doc_detector_pl``` et exécutez:
 
 ```bash
 tensorboard --logdir logs/ --bind_all
@@ -76,7 +76,7 @@ ouvrez l'url pour accéder à TensorBoard
 
 ### - Résultats générés :
 - Les courbes d'entraînement sont visibles dans TensorBoard.
-- Le modèle entraîné est sauvegardé dans le dossier models/.
+- Le modèle entraîné est sauvegardé dans le dossier ```models/```.
 
 ###  Génération des Masques
 Pour préparer les données d'entraînement, des masques correspondant aux documents présents dans les images sont générés à l'aide du script ```generate_masks.py```. Les masques servent de cibles pour l'entraînement du modèle
