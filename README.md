@@ -50,7 +50,7 @@ Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un
     #### Attention -> à lire !!!
    j'ai généré un fichier ```requirements.txt``` contenant la liste des dépendances installées sur mon environnement virtuel python (il se peut qu'il y ait des trucs pertinent pour moi dedans  genre certaines bibliothèques comme ```pytorch-triton-rocm``` ou ```jax``` pour les gpu amd désolé)
 
-   ceci est la commande :
+   Ceci est la commande pour générer le fichier directement à partir de son environnement virtuel  :
 
     ```bash
    pip freeze > requirements.txt
@@ -159,9 +159,9 @@ Cette courbe représente l'évolution de la perte (ou erreur) calculée sur les 
 L'overfitting se produit lorsque le modèle apprend trop bien sur les données d'entraînement, au point de mémoriser des détails spécifiques qui ne se généralisent pas à de nouvelles données. Cela se traduit par une bonne performance sur les données d'entraînement, mais de mauvaises performances sur des données jamais vues auparavant. Voici quelques techniques pour éviter ce problème
 
 #####  Signes d'overfitting dans TensorBoard :
-- Augmentation de la val_loss : Si la courbe de validation (val_loss) commence à augmenter ou stagner alors que la perte d'entraînement (train_loss) continue de diminuer, cela indique que le modèle mémorise les données d'entraînement sans généraliser correctement.
-- Écart significatif entre train_loss et val_loss : Une différence importante entre la perte d'entraînement (très faible) et la perte de validation (plus élevée) reflète un sur-apprentissage sur les données d'entraînement.
-- Fluctuations importantes de val_loss : De grandes oscillations peuvent indiquer que le modèle est instable ou que les données de validation ne sont pas représentatives.
+- Augmentation de la ```val_loss``` : Si la courbe de validation (val_loss) commence à augmenter ou stagner alors que la perte d'entraînement (```train_loss```) continue de diminuer, cela indique que le modèle mémorise les données d'entraînement sans généraliser correctement.
+- Écart significatif entre ```train_loss``` et ```val_loss``` : Une différence importante entre la perte d'entraînement (très faible) et la perte de validation (plus élevée) reflète un sur-apprentissage sur les données d'entraînement.
+- Fluctuations importantes de ```val_loss``` : De grandes oscillations peuvent indiquer que le modèle est instable ou que les données de validation ne sont pas représentatives.
 
 #####  Conseils pour éviter l'overfitting :
 
@@ -170,7 +170,7 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 - Augmentation des données (Data Augmentation) : Utiliser des transformations comme des rotations, des inversions, des changements de luminosité ou des zooms. Cela peut être implémenté via des outils comme torchvision.transforms.
 
 #### 2.Cross-validation :
--Diviser les données en plusieurs groupes et entraîner le modèle sur différents sous-ensembles de données. Cela aide à vérifier la capacité de généralisation du modèle et réduit la dépendance à une seule division "données d'entraînement / validation".
+- Diviser les données en plusieurs groupes et entraîner le modèle sur différents sous-ensembles de données. Cela aide à vérifier la capacité de généralisation du modèle et réduit la dépendance à une seule division "données d'entraînement / validation".
 
 #### 3. Arrêt anticipé (Early Stopping) :
 - Configurer un mécanisme dans PyTorch Lightning pour arrêter l'entraînement lorsque la perte de validation (val_loss) n'améliore plus après un certain nombre d'époch. Cela empêche le modèle d'apprendre des détails inutiles des données d'entraînement.
@@ -182,10 +182,10 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 - Ajouter une régularisation L2 (via l'option ```weight_decay``` dans l'optimiseur Adam). Cela limite la croissance excessive des poids du modèle et empêche la mémorisation.
 
 #### 6.Simplifier le modèle si nécessaire :
--Si le modèle est trop complexe pour la taille des données disponibles (par exemple, trop de couches ou de paramètres), réduire sa taille peut améliorer la généralisation.
+- Si le modèle est trop complexe pour la taille des données disponibles (par exemple, trop de couches ou de paramètres), réduire sa taille peut améliorer la généralisation.
 
 #### 7.Créer des ensembles de validation équilibrés :
--S'assurer que les données de validation reflètent la diversité des données réelles. Cela permet d'avoir une meilleure idée des performances du modèle sur des cas non vus.
+- S'assurer que les données de validation reflètent la diversité des données réelles. Cela permet d'avoir une meilleure idée des performances du modèle sur des cas non vus.
 
 
 ### Fonctionnalité de Recadrage Automatique
