@@ -4,7 +4,7 @@
 
 ## Description du Projet
 
-Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un modèle de détection basé sur l'architecture UNet. Il permet de détecter, segmenter et recadrer automatiquement des documents dans des images. Le projet est organisé pour un environnement d'entraînement et d'évaluation flexible, en exploitant TensorBoard pour visualiser les courbes d'entraînement et OpenCV pour le traitement des masques.
+Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un modèle de détection basé sur l'architecture UNet qui est une structurede réseaux de neurones conçur pour la segmentation d'images, c'est à dire reconnaitre et localiser des éléments spécifiques dans une image. Il permet de détecter, segmenter et recadrer automatiquement des documents dans des images. Le projet est organisé pour un environnement d'entraînement et d'évaluation flexible, en exploitant TensorBoard pour visualiser les courbes d'entraînement et OpenCV pour le traitement des masques.
 
 ---
 
@@ -93,7 +93,7 @@ Le script utilise OpenCV pour détecter automatiquement les documents dans les i
 - Contours : Identifie les contours dans l'image.
 - Filtrage : Retient uniquement les contours ayant :
 #####  - Quatre côtés (approximé comme un quadrilatère).
-###### -Une aire minimale (par défaut, > 1000 pixels).
+##### -Une aire minimale (par défaut, > 1000 pixels).
 #####  -Masque Final : Dessine le quadrilatère détecté.
 
 #### Les masques générés sont sauvegardés dans le dossier ```data/masks/```
