@@ -60,24 +60,6 @@ Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un
 
 ## Utilisation
 
-### Entraîner le Modèle
-Dans le terminal principal, exécutez la commande suivante pour lancer l'entraînement :
-
-```bash
-python train_model.py
-```
-
-Ouvrez un deuxième terminal, placez-vous dans le dossier ```doc_detector_pl``` et exécutez:
-
-```bash
-tensorboard --logdir logs/ --bind_all
-```
-ouvrez l'url pour accéder à TensorBoard
-
-### - Résultats générés :
-- Les courbes d'entraînement sont visibles dans TensorBoard.
-- Le modèle entraîné est sauvegardé dans le dossier ```models/```.
-
 ###  Génération des Masques
 Pour préparer les données d'entraînement, des masques correspondant aux documents présents dans les images sont générés à l'aide du script ```generate_masks.py```. Les masques servent de cibles pour l'entraînement du modèle
 
@@ -92,11 +74,30 @@ Le script utilise OpenCV pour détecter automatiquement les documents dans les i
 - Seuil adaptatif : Applique une méthode de seuil adaptatif pour séparer le fond des zones importantes.
 - Contours : Identifie les contours dans l'image.
 - Filtrage : Retient uniquement les contours ayant :
-#####  - Quatre côtés (approximé comme un quadrilatère).
-##### -Une aire minimale (par défaut, > 1000 pixels).
-#####  -Masque Final : Dessine le quadrilatère détecté.
+- Quatre côtés (approximé comme un quadrilatère).
+- Une aire minimale (par défaut, > 1000 pixels).
+- Masque Final : Dessine le quadrilatère détecté.
 
-#### Les masques générés sont sauvegardés dans le dossier ```data/masks/```
+##### Les masques générés sont sauvegardés dans le dossier ```data/masks/```
+
+### Entraîner le Modèle
+Dans le terminal principal, exécutez la commande suivante pour lancer l'entraînement :
+
+```bash
+python train_model.py
+```
+
+Ouvrez un deuxième terminal, placez-vous dans le dossier ```doc_detector_pl``` et exécutez:
+
+```bash
+tensorboard --logdir logs/ --bind_all
+```
+ouvrez l'url pour accéder à TensorBoard
+
+### Résultats générés :
+- Les courbes d'entraînement sont visibles dans TensorBoard.
+- Le modèle entraîné est sauvegardé dans le dossier ```models/```.
+
 
 ### Tester le Modèle
 Testez le modèle sur une image de test et générez des comparaisons visuelles :
@@ -159,7 +160,7 @@ Cette courbe représente l'évolution de la perte (ou erreur) calculée sur les 
 L'overfitting se produit lorsque le modèle apprend trop bien sur les données d'entraînement, au point de mémoriser des détails spécifiques qui ne se généralisent pas à de nouvelles données. Cela se traduit par une bonne performance sur les données d'entraînement, mais de mauvaises performances sur des données jamais vues auparavant. Voici quelques techniques pour éviter ce problème
 
 #####  Signes d'overfitting dans TensorBoard :
-- Augmentation de la ```val_loss``` : Si la courbe de validation (val_loss) commence à augmenter ou stagner alors que la perte d'entraînement (```train_loss```) continue de diminuer, cela indique que le modèle mémorise les données d'entraînement sans généraliser correctement.
+- Augmentation de la ```val_loss``` : Si la courbe de validation (```val_loss```) commence à augmenter ou stagner alors que la perte d'entraînement (```train_loss```) continue de diminuer, cela indique que le modèle mémorise les données d'entraînement sans généraliser correctement.
 - Écart significatif entre ```train_loss``` et ```val_loss``` : Une différence importante entre la perte d'entraînement (très faible) et la perte de validation (plus élevée) reflète un sur-apprentissage sur les données d'entraînement.
 - Fluctuations importantes de ```val_loss``` : De grandes oscillations peuvent indiquer que le modèle est instable ou que les données de validation ne sont pas représentatives.
 
@@ -173,10 +174,10 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 - Diviser les données en plusieurs groupes et entraîner le modèle sur différents sous-ensembles de données. Cela aide à vérifier la capacité de généralisation du modèle et réduit la dépendance à une seule division "données d'entraînement / validation".
 
 #### 3. Arrêt anticipé (Early Stopping) :
-- Configurer un mécanisme dans PyTorch Lightning pour arrêter l'entraînement lorsque la perte de validation (val_loss) n'améliore plus après un certain nombre d'époch. Cela empêche le modèle d'apprendre des détails inutiles des données d'entraînement.
+- Configurer un mécanisme dans PyTorch Lightning pour arrêter l'entraînement lorsque la perte de validation (```val_loss```) n'améliore plus après un certain nombre d'époch. Cela empêche le modèle d'apprendre des détails inutiles des données d'entraînement.
   
 #### 4.Ajouter un Dropout :
-- Utiliser des couches de Dropout dans le modèle U-Net pour désactiver aléatoirement une fraction des neurones pendant l'entraînement. Cela force le modèle à s'appuyer sur différentes combinaisons de caractéristiques et améliore la généralisation.
+- Utiliser des couches de Dropout dans le modèle **U-Net** pour désactiver aléatoirement une fraction des neurones pendant l'entraînement. Cela force le modèle à s'appuyer sur différentes combinaisons de caractéristiques et améliore la généralisation.
 
 #### 5.Régularisation L2 :
 - Ajouter une régularisation L2 (via l'option ```weight_decay``` dans l'optimiseur Adam). Cela limite la croissance excessive des poids du modèle et empêche la mémorisation.
