@@ -191,7 +191,7 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 
 ### Fonctionnalité de Recadrage Automatique
 
-Le script ```test_model_and_crop``` permet d'effectuer une prédiction sur une image de test et de recadrer automatiquement le document détecté en fonction du masque prédit par le modèle UNet. Cette étape simule comment le modèle peut être utilisé dans un pipeline complet quand le modèle sera exporté sur tensorflow js pour être utilisable sur un navigateur, allant de la détection à l'extraction ciblée d'un document.
+Le script ```test_model``` permet d'effectuer une prédiction sur une image de test et de recadrer automatiquement le document détecté en fonction du masque prédit par le modèle UNet. Cette étape simule comment le modèle peut être utilisé dans un pipeline complet quand le modèle sera exporté sur tensorflow js pour être utilisable sur un navigateur, allant de la détection à l'extraction ciblée d'un document.
 
 
 #### Étapes de Fonctionnement :
