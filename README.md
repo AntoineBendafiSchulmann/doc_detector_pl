@@ -163,13 +163,29 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 - Écart significatif entre train_loss et val_loss : Une différence importante entre la perte d'entraînement (très faible) et la perte de validation (plus élevée) reflète un sur-apprentissage sur les données d'entraînement.
 - Fluctuations importantes de val_loss : De grandes oscillations peuvent indiquer que le modèle est instable ou que les données de validation ne sont pas représentatives.
 
-[à faire : conseils pour éviter]
+#####  Conseils pour éviter l'overfitting :
 
-- meilleure donnée d'entrainement, augmenté qualité et volume
-- Aross-validation on entraînera alors le modèle K fois sur chaque groupe en variant la répartition d'apprentissages et de tests pas que deux groupes de données d'apprentissage et  données test
-- Cesser l’entraînement de l’algorithme dès que ses performances sur l’ensemble de validation commencent à se détériorer
-- Ajouter des convolutions
-- Dropouts
+#### 1.Améliorer les données d'entraînement :
+- Augmenter le volume des données : Ajouter davantage d'exemples, si possible, pour couvrir une plus large gamme de variations (angles, résolutions, types de documents).
+- Augmentation des données (Data Augmentation) : Utiliser des transformations comme des rotations, des inversions, des changements de luminosité ou des zooms. Cela peut être implémenté via des outils comme torchvision.transforms.
+
+#### 2.Cross-validation :
+-Diviser les données en plusieurs groupes et entraîner le modèle sur différents sous-ensembles de données. Cela aide à vérifier la capacité de généralisation du modèle et réduit la dépendance à une seule division "données d'entraînement / validation".
+
+#### 3. Arrêt anticipé (Early Stopping) :
+- Configurer un mécanisme dans PyTorch Lightning pour arrêter l'entraînement lorsque la perte de validation (val_loss) n'améliore plus après un certain nombre d'époch. Cela empêche le modèle d'apprendre des détails inutiles des données d'entraînement.
+  
+#### 4.Ajouter un Dropout :
+- Utiliser des couches de Dropout dans le modèle U-Net pour désactiver aléatoirement une fraction des neurones pendant l'entraînement. Cela force le modèle à s'appuyer sur différentes combinaisons de caractéristiques et améliore la généralisation.
+
+#### 5.Régularisation L2 :
+- Ajouter une régularisation L2 (via l'option ```weight_decay``` dans l'optimiseur Adam). Cela limite la croissance excessive des poids du modèle et empêche la mémorisation.
+- 
+#### 6.Simplifier le modèle si nécessaire :
+-Si le modèle est trop complexe pour la taille des données disponibles (par exemple, trop de couches ou de paramètres), réduire sa taille peut améliorer la généralisation.
+
+#### 7.Créer des ensembles de validation équilibrés :
+-S'assurer que les données de validation reflètent la diversité des données réelles. Cela permet d'avoir une meilleure idée des performances du modèle sur des cas non vus.
 
 
 ### Fonctionnalité de Recadrage Automatique
@@ -222,3 +238,14 @@ Voici la sortie générée par ce script :
 Le modèle entraîné peut être exporté dans différents formats comme ONNX ou TensorFlow.js, permettant son utilisation dans des systèmes backend ou frontend.
 - **ONNX** : Permet l'intégration avec des frameworks comme ONNX Runtime pour des prédictions rapides.
 - **TensorFlow.js** : Rendra le modèle directement utilisable dans les navigateurs.
+
+#### Déploiement via une API Flask
+
+Le modèle peut également être déployé via une **API Flask** pour permettre une interaction en temps réel avec des systèmes externes. Voici les étapes principales d'une intégration avec Flask :
+
+#### **Création de l'API** : L'API reçoit une image en entrée (par exemple sous forme de fichier envoyé dans une requête POST), l'analyse avec le modèle U-Net, et retourne :
+
+- Le masque prédit.
+- L'image recadrée.
+- Les métriques associées.
+  
