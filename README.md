@@ -163,6 +163,14 @@ L'overfitting se produit lorsque le modèle apprend trop bien sur les données d
 - Écart significatif entre train_loss et val_loss : Une différence importante entre la perte d'entraînement (très faible) et la perte de validation (plus élevée) reflète un sur-apprentissage sur les données d'entraînement.
 - Fluctuations importantes de val_loss : De grandes oscillations peuvent indiquer que le modèle est instable ou que les données de validation ne sont pas représentatives.
 
+[à faire : conseils pour éviter]
+
+- meilleure donnée d'entrainement, augmenté qualité et volume
+- Aross-validation on entraînera alors le modèle K fois sur chaque groupe en variant la répartition d'apprentissages et de tests pas que deux groupes de données d'apprentissage et  données test
+- Cesser l’entraînement de l’algorithme dès que ses performances sur l’ensemble de validation commencent à se détériorer
+- Ajouter des convolutions
+- Dropouts
+
 
 ### Fonctionnalité de Recadrage Automatique
 
