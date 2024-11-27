@@ -17,6 +17,7 @@ Le projet **Document Detector** utilise **PyTorch Lightning** pour entraîner un
 - **`data/`** : Données utilisées pour l'entraînement et les tests.
   - `images/` : Images d'entraînement.
   - `masks/` : Masques d'entraînement correspondants.
+  - `debug/` : Contient les images de debug, où les masques générés sont superposés aux images originales. Ces fichiers permettent de vérifier visuellement la qualité et la pertinence des masques.
   - `test_images/` : Images de test pour vérifier les performances du modèle.
 
 - **`models/`** : Fichiers des modèles sauvegardés :
@@ -79,6 +80,13 @@ Le script utilise OpenCV pour détecter automatiquement les documents dans les i
 - Masque Final : Dessine le quadrilatère détecté.
 
 ##### Les masques générés sont sauvegardés dans le dossier ```data/masks/```
+
+#### Débogage Visuel
+
+En cas de besoin, un répertoire ```debug/``` est utilisé pour sauvegarder des images où les masques générés sont superposés aux images originales. Cela permet de vérifier visuellement que les contours détectés et les masques générés sont conformes aux attentes.
+
+- Les fichiers dans ```debug/``` aident à repérer rapidement les images problématiques.
+
 
 ### Entraîner le Modèle
 Dans le terminal principal, exécutez la commande suivante pour lancer l'entraînement :
@@ -229,8 +237,12 @@ python test_model.py
 
 Voici la sortie générée par ce script :
 
+![Exemple d'image](assets/result.png)
+
+(je sais il reste du travail au vu du résultat mais vous avez l'idée)
+
 - Image originale : Affiche l'image d'entrée brute.
-- Masque attendu : Masque manuel utilisé pour l'entraînement.
+- Masque attendu : Masque utilisé pour l'entraînement.
 - Masque prédit : Généré automatiquement par le modèle.
 - Image recadrée : Image finale extraite en fonction des prédictions
 

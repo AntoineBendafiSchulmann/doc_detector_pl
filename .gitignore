@@ -4,6 +4,7 @@ __pycache__/
 
 data/images/*.jpg
 data/masks/*.jpg
+data/debug/*.jpg
 data/test_images/*.png
 
 logs/
